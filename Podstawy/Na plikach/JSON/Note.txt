@@ -1,0 +1,88 @@
+Aby skorzystać z JSON
+
+import json
+
+SAVING /////////////////////////////////////////////////////////////////////
+
+Od teraz możemy skorzystać z metod, np. 
+
+dump - (z ang. zsypać/zwalić/zrzucić)
+
+dumps - zapisuje dane JSON do postaci stringowej  np. 
+
+          json.dumps(film) 
+
+
+Aby polskie znaki zostały poprawione wyświetlone należy napisać:
+
+          json.dumps(film, ensure_ascii=False) 
+
+
+dump - służy do zapisywania danych do pliku w postaci JSON. 
+
+           with open ("sample.json", "w", encoding="UTF-8") as file:
+                json.dump(flim, file, ensure_ascii=False)
+
+
+
+
+
+LOADING /////////////////////////////////////////////////////////////////////////
+
+load - z ang. wczytać 
+
+json.loads(jsonstring) - przetwarza jsonstring na dane typu Python
+
+json.load(filePointer) - wczytuje JSON z pliku
+
+
+Aby odkodować plik, który został nam przesłany 
+
+decodedMovie = json.loads(encodedRetrievedMovie, enconding="UTF-8")
+
+
+Po wywołaniu powyższego kodu JSON został poprawnie odkodowany i możemy operować na nim korzystając z decodedMovie
+
+Aby wczytać dane z pliku JSON na język Python
+
+with open("sample.json", enconding="UTF-8") as file:
+    wynik = json.load(file)
+
+
+
+
+PRETTY PRINT //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Aby kod, który wczytujemy z JSON był czytelniejsze - w metodzie dump i dumps mamy możliwość przesłania dodatkowego nazwanego argumentu - indent.
+indent (z ang. wcięcie), którego długość określamy po znaku równości. 
+
+    encodedFilm = json.dumps(film, ensure_ascii=False, indent=4)
+
+___
+
+Możemy posortować alfabetycznie dane JSON (może przydać się podczas tworzenia analiz, porównywania dużej ilości danych itp.) Domyślna wartość sortowania kluczy ustawiona jest na False, ale gdy chcemy aby były one sortowane należy zmienić wartość na true.
+
+
+encodedFilm = json.dumps(film, ensure_ascii = False, indent=4, sort_keys=True)
+
+
+Gdy chcemy wczytać plik (np. do wyniku) aby był czytelniejszy możemy skorzystać z dwóch metod: 
+
+wywołanie json.dumps na wyniku 
+
+  print(json.dumps(wynik, indent = 4, ensure_ascii = False, sort_keys = True))
+
+
+import ze standardowej biblioteki funkcję pprint (z.ang. pretty print - ładnie drukowane) i wysyłamy tam nasz wynik 
+
+          
+       import pprint
+                       
+       pprint.pprint(wynik)
+
+
+
+
+
+
